@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/btn_admin.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/home_rcv1_background.xml" value="0.1065" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/home_rcv2_background.xml" value="0.1065" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/home_rcv3_background.xml" value="0.1065" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_back.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_history.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_key.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_logout.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_map.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_notification.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_right1.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_setting.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/ic_userprofile.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/notification_select.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/drawable-v24/person_background.xml" value="0.1" />
+        <entry key="..\:/AppFruit/app/src/main/res/layout-w1240dp/activity_history.xml" value="0.435546875" />
+        <entry key="..\:/AppFruit/app/src/main/res/layout-w936dp/activity_history.xml" value="0.303125" />
+        <entry key="..\:/AppFruit/app/src/main/res/layout/activity_admin.xml" value="0.4041666666666667" />
+        <entry key="..\:/AppFruit/app/src/main/res/layout/activity_history.xml" value="0.4041666666666667" />
+        <entry key="..\:/AppFruit/app/src/main/res/layout/activity_main.xml" value="0.4041666666666667" />
+        <entry key="..\:/AppFruit/app/src/main/res/layout/activity_profile.xml" value="0.4" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/btn_admin.xml" value="0.1365" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_discount.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_grid.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_home.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_list.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_listed_items.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_male.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_options.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_shopping_cart.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable/side_nav_bar.xml" value="0.1155" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/activity_admin.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/activity_history.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/activity_profile.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/fruit_item.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/item_user.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/layout/nav_header_main.xml" value="0.6666666666666666" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
+        <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/menu/main.xml" value="0.17552083333333332" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
