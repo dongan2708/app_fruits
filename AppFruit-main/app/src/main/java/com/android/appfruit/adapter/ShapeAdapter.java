@@ -12,15 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.appfruit.R;
 import com.android.appfruit.entity.Fruits;
+import com.android.appfruit.entity.Product;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 public class ShapeAdapter extends RecyclerView.Adapter
 {
-    List<Fruits> userList;
+    List<Product> userList;
     Context mContext;
 
-    public ShapeAdapter(Context context, List<Fruits> users)
+    public ShapeAdapter(Context context, List<Product> users)
     {
         this.userList = users;
         this.mContext = context;
@@ -38,11 +40,11 @@ public class ShapeAdapter extends RecyclerView.Adapter
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Fruits user = userList.get(position);
+        Product user = userList.get(position);
         ViewHolder myHolder = (ViewHolder) holder;
         myHolder.tv_name.setText(user.getName());
-        myHolder.tv_price.setText(user.getPrice());
-        myHolder.img_user.setImageResource(user.getImage());
+        myHolder.tv_price.setText(String.valueOf(user.getPrice()));
+        Glide.with(mContext).load(user.getThumbnail()).into(myHolder.img_user);
 
     }
 

@@ -12,16 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppFruit">
         <activity
+            android:name=".activity.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.History"
             android:exported="true"
             android:label="@string/title_activity_history" />
         <activity
             android:name=".Admin.Admin"
             android:exported="true" />
-        <activity
-            android:name=".activity.Profile"
-            android:exported="true"
-            android:label="Profile"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

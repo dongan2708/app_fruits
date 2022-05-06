@@ -5,18 +5,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
 import android.widget.SearchView;
 
 import com.android.appfruit.adapter.ShapeAdapter;
 import com.android.appfruit.entity.Fruits;
+import com.android.appfruit.entity.ListProductResponse;
+import com.android.appfruit.entity.Product;
+import com.android.appfruit.service.ProductService;
+import com.android.appfruit.util.RetrofitGenerator;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
 {
 
+    private ProductService productService;
+    private List<Product> products;
     public static ArrayList<Fruits> fruitsList = new ArrayList<Fruits>();
 
     private RecyclerView listView;
@@ -24,6 +35,7 @@ public class MainActivity extends AppCompatActivity
     private String selectedFilter = "all";
     private String currentSearchText = "";
     private SearchView searchView;
+    private ShapeAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -71,7 +83,7 @@ public class MainActivity extends AppCompatActivity
                         }
                     }
                 }
-                ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), filteredShapes);
+                ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), products);
                 listView.setAdapter(adapter);
 
                 return false;
@@ -81,33 +93,30 @@ public class MainActivity extends AppCompatActivity
 
     private void setupData()
     {
-        Fruits apple = new Fruits(R.drawable.apple,"Apple","10000");
-        fruitsList.add(apple);
-        Fruits banana = new Fruits(R.drawable.bananas,"Bananas","10000");
-        fruitsList.add(banana);
-        Fruits dragon = new Fruits(R.drawable.dragon_fruits,"Dragon","10000");
-        fruitsList.add(dragon);
-        Fruits grapes = new Fruits(R.drawable.grapes,"Grapes","10000");
-        fruitsList.add(grapes);
-        Fruits guava = new Fruits(R.drawable.guava_fruit,"Guava","10000");
-        fruitsList.add(guava);
-        Fruits apple4 = new Fruits(R.drawable.apple1,"Apple","10000");
-        fruitsList.add(apple4);
-        Fruits banana1 = new Fruits(R.drawable.bananas1,"Bananas","10000");
-        fruitsList.add(banana1);
-        Fruits dragon1 = new Fruits(R.drawable.dragon_fruits4,"Dragon","10000");
-        fruitsList.add(dragon1);
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        products = new ArrayList<>();
+        if (productService == null){
+            productService = RetrofitGenerator.createService(ProductService.class);
+        }
+        try {
+            Response<ListProductResponse> responseProductResponse = productService.getSong().execute();
+            if (responseProductResponse.isSuccessful()){
+                products = responseProductResponse.body().getData();
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
+
 
     private void setUpList()
     {
         listView = (RecyclerView) findViewById(R.id.shapesListView);
         LinearLayoutManager llm = new LinearLayoutManager(this);
-        llm.setOrientation(LinearLayoutManager.VERTICAL);
-
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), fruitsList);
+//        llm.setOrientation(LinearLayoutManager.VERTICAL);
         listView.setLayoutManager(llm);
+        adapter = new ShapeAdapter(getApplicationContext(), products);
         listView.setAdapter(adapter);
     }
 
@@ -125,8 +134,6 @@ public class MainActivity extends AppCompatActivity
 //        });
 
     }
-
-
 
     private void filterList(String status)
     {
@@ -154,7 +161,7 @@ public class MainActivity extends AppCompatActivity
             }
         }
 
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), filteredShapes);
+        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), products);
         listView.setAdapter(adapter);
     }
 
@@ -162,7 +169,7 @@ public class MainActivity extends AppCompatActivity
     public void allFilterTapped(View view)
     {
         selectedFilter = "all";
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), fruitsList);
+        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), products);
         listView.setAdapter(adapter);
     }
 
