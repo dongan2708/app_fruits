@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitGenerator {
-    private static final String BASE_URL = "https://project-sem4.herokuapp.com/";
+    private static final String BASE_URL = "https://sem4-fruitapp.herokuapp.com/";
     private static Retrofit.Builder builder
             = new Retrofit.Builder()
             .baseUrl(BASE_URL)

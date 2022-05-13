@@ -7,15 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.View;
 import android.widget.SearchView;
 
-import com.android.appfruit.adapter.ShapeAdapter;
-import com.android.appfruit.entity.Fruits;
+import com.android.appfruit.adapter.ProductAdapter;
 import com.android.appfruit.entity.ListProductResponse;
 import com.android.appfruit.entity.Product;
 import com.android.appfruit.service.ProductService;
-import com.android.appfruit.util.RetrofitGenerator;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,17 +23,12 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
 {
-
-    private ProductService productService;
-    private List<Product> products;
-    public static ArrayList<Fruits> fruitsList = new ArrayList<Fruits>();
-
+    public static ArrayList<Product> fruitsList = new ArrayList<>();
     private RecyclerView listView;
-
     private String selectedFilter = "all";
     private String currentSearchText = "";
     private SearchView searchView;
-    private ShapeAdapter adapter;
+    private ProductAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,9 +37,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         initSearchWidgets();
-        setupData();
         setUpList();
-        setUpOnclickListener();
+
     }
 
     private void initSearchWidgets()
@@ -64,9 +56,9 @@ public class MainActivity extends AppCompatActivity
             public boolean onQueryTextChange(String s)
             {
                 currentSearchText = s;
-                ArrayList<Fruits> filteredShapes = new ArrayList<Fruits>();
+                ArrayList<Product> filteredShapes = new ArrayList<Product>();
 
-                for(Fruits fruits: fruitsList)
+                for(com.android.appfruit.entity.Product fruits: fruitsList)
                 {
                     if(fruits.getName().toLowerCase().contains(s.toLowerCase()))
                     {
@@ -83,7 +75,7 @@ public class MainActivity extends AppCompatActivity
                         }
                     }
                 }
-                ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), products);
+                ProductAdapter adapter = new ProductAdapter(getApplicationContext(), fruitsList);
                 listView.setAdapter(adapter);
 
                 return false;
@@ -91,36 +83,17 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    private void setupData()
-    {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        products = new ArrayList<>();
-        if (productService == null){
-            productService = RetrofitGenerator.createService(ProductService.class);
-        }
-        try {
-            Response<ListProductResponse> responseProductResponse = productService.getSong().execute();
-            if (responseProductResponse.isSuccessful()){
-                products = responseProductResponse.body().getData();
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
-
     private void setUpList()
     {
         listView = (RecyclerView) findViewById(R.id.shapesListView);
         LinearLayoutManager llm = new LinearLayoutManager(this);
 //        llm.setOrientation(LinearLayoutManager.VERTICAL);
         listView.setLayoutManager(llm);
-        adapter = new ShapeAdapter(getApplicationContext(), products);
+        adapter = new ProductAdapter(getApplicationContext(), fruitsList);
         listView.setAdapter(adapter);
     }
 
-    private void setUpOnclickListener()
+    //private void setUpOnclickListener()
     {
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 //            @Override
@@ -135,66 +108,81 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void filterList(String status)
+    private void setUpOnclickListener()
     {
-        status = status.toLowerCase();
-        selectedFilter = status;
-        Log.d("Filter", "-----" + status);
-        ArrayList<Fruits> filteredShapes = new ArrayList<Fruits>();
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l)
+//            {
+//                Product selectShape = (Product) (listView.getItemAtPosition(position));
+//                Intent showDetail = new Intent(getApplicationContext(), DetailActivity.class);
+//               showDetail.putExtra("id",selectShape.getId());
+//                startActivity(showDetail);
+//            }
+//        });
 
-        for(Fruits fruits: fruitsList)
-        {
-            Log.d("Name", "-----" + fruits.getName());
-            if(fruits.getName().toLowerCase().contains(status))
-            {
-                if(currentSearchText.equals(""))
-                {
-                    filteredShapes.add(fruits);
-                }
-                else
-                {
-                    if(fruits.getName().toLowerCase().contains(currentSearchText.toLowerCase()))
-                    {
-                        filteredShapes.add(fruits);
-                    }
-                }
-            }
-        }
-
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), products);
-        listView.setAdapter(adapter);
     }
 
+   private void filterList(String status) {
+//        status = status.toLowerCase();
+//        selectedFilter = status;
+//        Log.d("Filter", "-----" + status);
+//        ArrayList<Product> filteredShapes = new ArrayList<Product>();
+//
+//        for(Product fruits: fruitsList)
+//        {
+//            Log.d("Name", "-----" + fruits.getName());
+//            if(fruits.getName().toLowerCase().contains(status))
+//            {
+//                if(currentSearchText.equals(""))
+//                {
+//                    filteredShapes.add(fruits);
+//                }
+//                else
+//                {
+//                    if(fruits.getName().toLowerCase().contains(currentSearchText.toLowerCase()))
+//                    {
+//                        filteredShapes.add(fruits);
+//                    }
+//                }
+//            }
+//        }
+//
+//        ProductAdapter adapter = new ProductAdapter(getApplicationContext(), products);
+//        listView.setAdapter(adapter);
+//    }
 
-    public void allFilterTapped(View view)
-    {
-        selectedFilter = "all";
-        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), products);
-        listView.setAdapter(adapter);
-    }
 
-    public void triangleFilterTapped(View view)
-    {
-        filterList("Apple");
-    }
+//    public void allFilterTapped(View view)
+//    {
+//        selectedFilter = "all";
+//        ShapeAdapter adapter = new ShapeAdapter(getApplicationContext(), products);
+//        listView.setAdapter(adapter);
+//    }
 
-    public void squareFilterTapped(View view)
-    {
-        filterList("Dragon");
-    }
+//    public void triangleFilterTapped(View view)
+//    {
+//        filterList("Apple");
+//    }
 
-    public void octagonFilterTapped(View view)
-    {
-        filterList("Bananas");
-    }
+//    public void squareFilterTapped(View view)
+//    {
+//        filterList("Dragon");
+//    }
 
-    public void rectangleFilterTapped(View view)
-    {
-        filterList("Guava");
-    }
+//    public void octagonFilterTapped(View view)
+//    {
+//        filterList("Bananas");
+//    }
 
-    public void circleFilterTapped(View view)
-    {
-        filterList("Grapes");
-    }
+//    public void rectangleFilterTapped(View view)
+//    {
+//        filterList("Guava");
+//    }
+
+//    public void circleFilterTapped(View view)
+//    {
+//        filterList("Grapes");
+//    }
+}
 }

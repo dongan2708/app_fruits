@@ -12,10 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppFruit">
         <activity
-            android:name=".activity.RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.ListProductActivity"
             android:exported="false" />
         <activity
             android:name=".activity.History"

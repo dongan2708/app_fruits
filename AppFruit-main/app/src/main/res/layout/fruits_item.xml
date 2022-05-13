@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/brand"
+            android:id="@+id/txtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgView"
@@ -39,8 +39,10 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="50dp"
+            android:autoSizeTextType="uniform"
             android:text="name"
             android:textSize="16sp"
+            app:layout_constrainedWidth="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.615"
@@ -49,21 +51,21 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/fruit_type"
+            android:id="@+id/txt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Fruit Type"
+            android:text="quantity"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/brand"
-            app:layout_constraintTop_toBottomOf="@+id/brand"
+            app:layout_constraintStart_toStartOf="@+id/txtView"
+            app:layout_constraintTop_toBottomOf="@+id/txtView"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/txt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -71,72 +73,34 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/fruit_type"
-            app:layout_constraintTop_toBottomOf="@+id/fruit_type"
+            app:layout_constraintStart_toStartOf="@+id/txt2"
+            app:layout_constraintTop_toBottomOf="@+id/txt2"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/quality"
+            android:id="@+id/txt4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="quality"
+            android:text="description"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/price"
-            app:layout_constraintTop_toBottomOf="@+id/price"
+            app:layout_constraintStart_toStartOf="@+id/txt3"
+            app:layout_constraintTop_toBottomOf="@+id/txt3"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/organic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="organic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/quality"
-            app:layout_constraintTop_toBottomOf="@+id/quality"
-            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/production"
+            android:id="@+id/txt6"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="production"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/organic"
-            app:layout_constraintTop_toBottomOf="@+id/organic"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/rs"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="45dp"
-            android:text="Rs."
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.295"
-            app:layout_constraintStart_toStartOf="@+id/fruit_type"
-            app:layout_constraintTop_toBottomOf="@+id/fruit_type"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/x"
-            android:layout_width="wrap_content"
+            android:minEms="2"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgView"
             android:layout_margin="10dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
-            android:text="Farmer Name : "
+            android:text="Name : "
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,70 +110,48 @@
             app:layout_constraintVertical_bias="0.021" />
 
         <TextView
-            android:id="@+id/y"
+            android:id="@+id/txt7"
             android:layout_width="wrap_content"
+            android:minEms="2"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Fruit Name : "
+            android:text="Quality : "
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/x"
-            app:layout_constraintTop_toBottomOf="@+id/x"
+            app:layout_constraintStart_toStartOf="@+id/txt6"
+            app:layout_constraintTop_toBottomOf="@+id/txt6"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/z"
+            android:id="@+id/txt8"
             android:layout_width="wrap_content"
+            android:minEms="2"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Price per kg : "
+            android:text="Price : "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/y"
-            app:layout_constraintTop_toBottomOf="@+id/y"
+            app:layout_constraintStart_toStartOf="@+id/txt7"
+            app:layout_constraintTop_toBottomOf="@+id/txt7"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/a"
+            android:id="@+id/txt9"
             android:layout_width="wrap_content"
+            android:minEms="2"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Quality : "
+            android:text="Description: "
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/z"
-            app:layout_constraintTop_toBottomOf="@+id/z"
+            app:layout_constraintStart_toStartOf="@+id/txt8"
+            app:layout_constraintTop_toBottomOf="@+id/txt8"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/b"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Organic : "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/a"
-            app:layout_constraintTop_toBottomOf="@+id/a"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/c"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Production : "
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/b"
-            app:layout_constraintTop_toBottomOf="@+id/b"
-            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

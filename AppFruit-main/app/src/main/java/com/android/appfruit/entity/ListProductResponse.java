@@ -7,6 +7,7 @@ public class ListProductResponse {
     private int status;
     private String message;
     private List<Product> data;
+    private List<Category> list;
 
     public ListProductResponse() {
     }
@@ -41,5 +42,13 @@ public class ListProductResponse {
 
     public void setData(List<Product> data) {
         this.data = data;
+    }
+
+    public List<Category> getList() {
+        return list;
+    }
+
+    public void setList(List<Category> list) {
+        this.list = list;
     }
 }
