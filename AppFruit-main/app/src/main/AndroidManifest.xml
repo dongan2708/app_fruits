@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.appfruit">
+    package="com.android.appfruit" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -10,10 +10,31 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppFruit">
+        android:theme="@style/Theme.AppFruit" >
+        <activity
+            android:name=".activity.CategoryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.WinterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AutumnActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SummerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.SpringActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CartActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.CheckoutActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.ListProductActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".activity.History"
             android:exported="true"
@@ -23,7 +44,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

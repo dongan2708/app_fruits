@@ -3,9 +3,10 @@ package com.android.appfruit.entity;
 import java.util.Date;
 
 public class Category{
-    private int id;
+    private Integer id;
     private String name;
-    private String status;
+    private double price;
+    private String thumbnail;
 
     public Category() {
     }
@@ -15,14 +16,16 @@ public class Category{
         return "Category{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", status='" + status + '\'' +
+                ", price=" + price +
+                ", thumbnail='" + thumbnail + '\'' +
                 '}';
     }
-    public int getId() {
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -34,15 +37,21 @@ public class Category{
         this.name = name;
     }
 
-    public String getStatus() {
-        return status;
+    public double getPrice() {
+        return price;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
+    public String getThumbnail() {
+        return thumbnail;
+    }
 
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
 }
 
 

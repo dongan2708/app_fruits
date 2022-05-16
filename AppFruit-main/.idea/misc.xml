@@ -24,19 +24,47 @@
         <entry key="..\:/AppFruit/app/src/main/res/layout/activity_history.xml" value="0.4041666666666667" />
         <entry key="..\:/AppFruit/app/src/main/res/layout/activity_main.xml" value="0.4041666666666667" />
         <entry key="..\:/AppFruit/app/src/main/res/layout/activity_profile.xml" value="0.4" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/drawable-v24/ic_baseline_drawer_menu_24.xml" value="0.14" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/drawable/ic_search.xml" value="0.126" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/font/abril_fatface.xml" value="0.1648148148148148" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/font/aclonica.xml" value="0.1" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/font/alike_angular.xml" value="0.20572916666666666" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/font/amarante.xml" value="0.20572916666666666" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/font/amita.xml" value="0.20572916666666666" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/font/baloo.xml" value="0.1648148148148148" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/font/berkshire_swash.xml" value="0.1648148148148148" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_admin.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_autumn.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_cart.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_category.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_categoryfragment.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_checkout.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_drawer_layout_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_frag1.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_frag2.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_history.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_list_product.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_login.xml" value="0.17552083333333332" />
-        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_productfragment.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_profile.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_register.xml" value="0.1" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_spring.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_summer.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/activity_winter.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/fragment_product.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/fruit_item.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/fruits_item.xml" value="0.22" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/item_user.xml" value="0.5378670788253478" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/main_activity.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/main_fragment.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/menu_header.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/layout/nav_header_main.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/menu/application_menu.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/menu/bottom_menu.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/AppFruit-main/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17552083333333332" />
         <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/btn_admin.xml" value="0.1365" />
         <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_discount.xml" value="0.1155" />
         <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/drawable-v24/ic_grid.xml" value="0.1155" />
