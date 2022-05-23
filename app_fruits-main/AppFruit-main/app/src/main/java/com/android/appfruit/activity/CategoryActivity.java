@@ -2,19 +2,12 @@ package com.android.appfruit.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import com.android.appfruit.R;
-import com.android.appfruit.fragment.AutumnFragment;
-import com.android.appfruit.fragment.SpringFragment;
-import com.android.appfruit.fragment.SummerFragment;
-import com.android.appfruit.fragment.WinterFragment;
 
 public class CategoryActivity extends AppCompatActivity {
 

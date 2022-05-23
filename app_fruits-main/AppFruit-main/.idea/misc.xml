@@ -123,6 +123,8 @@
         <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/menu/activity_main_drawer.xml" value="0.17552083333333332" />
         <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17552083333333332" />
         <entry key="..\:/SEM4_Android/AppFruit-main/app/src/main/res/menu/main.xml" value="0.17552083333333332" />
+        <entry key="app/src/main/res/layout/categories_item.xml" value="0.24375" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.24375" />
       </map>
     </option>
   </component>

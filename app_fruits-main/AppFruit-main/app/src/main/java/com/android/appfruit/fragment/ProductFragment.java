@@ -26,6 +26,7 @@ import java.util.List;
 import retrofit2.Response;
 
 public class ProductFragment extends Fragment {
+    private int currentCategoryId = 0;
     private ProductService productService;
     private RecyclerView recyclerView;
     private View view;
@@ -37,7 +38,6 @@ public class ProductFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         currentContext = container.getContext();
-        System.out.println(currentContext);
         view = inflater.inflate(R.layout.fragment_product, container, false);
         initData();
         initView();
@@ -45,31 +45,41 @@ public class ProductFragment extends Fragment {
         return view;
     }
 
-    private void initView(){
+    private void initView() {
         //products = new ArrayList<>();
         recyclerView = view.findViewById(R.id.recycler_view_list_product);
         recyclerView.setLayoutManager(new LinearLayoutManager(currentContext));
-        Log.i("Hello", "onCreate:2222 ----");
         recyclerView.setAdapter(new ProductAdapter(currentContext, products));
-
     }
-    private void  initData(){
+
+    private void initData() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         products = new ArrayList<>();
-        if (productService == null){
+        if (productService == null) {
             productService = RetrofitGenerator.createService(ProductService.class);
         }
         try {
-            Log.i("Hello", "onCreate: ----");
-            Response<ListProductResponse> responseProductResponse = productService.getAll().execute();
-            if (responseProductResponse.isSuccessful()){
-                responseProduct = responseProductResponse.body();
-                products = responseProduct.getData();
-                Log.i("Hello", "onCreate:12 ----" + products.size());
+            Response<ListProductResponse> responseProductResponse = null;
+            System.out.println("Current cateId: " + currentCategoryId);
+            if (currentCategoryId == 0) {
+                responseProductResponse = productService.getAll().execute();
+            } else {
+                responseProductResponse = productService.getByCategory(currentCategoryId).execute();
             }
-        }catch (IOException e){
+            if (responseProductResponse.isSuccessful()) {
+                products = responseProductResponse.body().getData();
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public int getCurrentCategoryId() {
+        return currentCategoryId;
+    }
+
+    public void setCurrentCategoryId(int currentCategoryId) {
+        this.currentCategoryId = currentCategoryId;
     }
 }
