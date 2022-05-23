@@ -7,19 +7,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.appfruit.MainActivity;
 import com.android.appfruit.R;
 import com.android.appfruit.adapter.CategoryAdapter;
-import com.android.appfruit.adapter.ProductAdapter;
 import com.android.appfruit.entity.Category;
-import com.android.appfruit.entity.ListCategoryResponse;
-import com.android.appfruit.entity.ListProductResponse;
-import com.android.appfruit.entity.Product;
 import com.android.appfruit.service.CategoryService;
 import com.android.appfruit.util.RetrofitGenerator;
 
@@ -31,30 +28,29 @@ import retrofit2.Response;
 
 public class CategoryFragment extends Fragment {
     private CategoryService categoryService;
-    private RecyclerView recyclerView;
     private View view;
     private List<Category> listCategoryResponse;
     private List<Category> categories;
     private Context currentContext;
+    private RecyclerView recyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         currentContext = container.getContext();
-        view = inflater.inflate(R.layout.activity_categoryfragment, container,false);
+        view = inflater.inflate(R.layout.fragment_category, container,false);
         // Inflate the layout for this fragment
-        initView();
         initData();
-
-        //bindEventToButton();
+        initView();
+//        bindEventToButton();
         return view;
     }
     private void initView(){
-        //products = new ArrayList<>();
-//        recyclerView = view.findViewById(R.id.recycler_view_category);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(currentContext));
-//        Log.i("Hello", "onCreate:2222 ----");
-//        recyclerView.setAdapter(new CategoryAdapter(currentContext, categories));
+//        categories = new ArrayList<>();
+        recyclerView = view.findViewById(R.id.recycler_view_list_category);
+        recyclerView.setLayoutManager(new LinearLayoutManager(currentContext));
+        Log.i("Hello", "onCreate:2222 ----");
+        recyclerView.setAdapter(new CategoryAdapter(currentContext, categories));
 
     }
     private void  initData(){
@@ -77,40 +73,50 @@ public class CategoryFragment extends Fragment {
         }
     }
 //    private void bindEventToButton() {
-//        Button btn1 = findViewById(R.id.button1);
-//        Button btn2 = findViewById(R.id.button2);
-//        Button btn3 = findViewById(R.id.button3);
-//        Button btn4 = findViewById(R.id.button4);
+//        Button btn1 = view.findViewById(R.id.button1);
+//        Button btn2 = view.findViewById(R.id.button2);
+//        Button btn3 = view.findViewById(R.id.button3);
+//        Button btn4 = view.findViewById(R.id.button4);
 //
 //        btn1.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(CategoryFragment.this, SpringActivity.class);
-//                startActivity(intent);
+//                Button textView = view.findViewById(R.id.button1);
+//                textView.setOnClickListener(view1 -> getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.frame_layout,MainActivity.springFragment , SpringFragment.class.getName())
+//                        .commit());
 //            }
 //        });
 //
 //        btn2.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(CategoryActivity.this, SummerActivity.class);
-//                startActivity(intent);
+//                Button textView = view.findViewById(R.id.button2);
+//                textView.setOnClickListener(view1 -> getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.frame_layout,MainActivity.autumnFragment , AutumnFragment.class.getName())
+//                        .commit());
 //            }
 //        });
-//
 //        btn3.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(CategoryActivity.this, AutumnActivity.class);
-//                startActivity(intent);
+//                Button textView = view.findViewById(R.id.button3);
+//                textView.setOnClickListener(view1 -> getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.frame_layout,MainActivity.summerFragment , SummerFragment.class.getName())
+//                        .commit());
 //            }
 //        });
-//
 //        btn4.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Intent intent = new Intent(CategoryActivity.this, WinterActivity.class);
-//                startActivity(intent);
+//                Button textView = view.findViewById(R.id.button4);
+//                textView.setOnClickListener(view1 -> getActivity().getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.frame_layout,MainActivity.winterFragment , WinterFragment.class.getName())
+//                        .commit());
 //            }
 //        });
 //    }

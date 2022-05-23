@@ -30,46 +30,46 @@ public class CategoryActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         Log.i("Hello", "onCreate: ");
-        setContentView(R.layout.activity_category);
+        setContentView(R.layout.fragment_category);
 
-        bindEventToButton();
+//        bindEventToButton();
     }
-    private void bindEventToButton() {
-        Button btn1 = findViewById(R.id.button1);
-        Button btn2 = findViewById(R.id.button2);
-        Button btn3 = findViewById(R.id.button3);
-        Button btn4 = findViewById(R.id.button4);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CategoryActivity.this, SpringFragment.class);
-                startActivity(intent);
-            }
-        });
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CategoryActivity.this, SummerFragment.class);
-                startActivity(intent);
-            }
-        });
-
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CategoryActivity.this, AutumnFragment.class);
-                startActivity(intent);
-            }
-        });
-
-        btn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CategoryActivity.this, WinterFragment.class);
-                startActivity(intent);
-            }
-        });
-    }
+//    private void bindEventToButton() {
+//        Button btn1 = findViewById(R.id.button1);
+//        Button btn2 = findViewById(R.id.button2);
+//        Button btn3 = findViewById(R.id.button3);
+//        Button btn4 = findViewById(R.id.button4);
+//
+//        btn1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(CategoryActivity.this, SpringFragment.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btn2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(CategoryActivity.this, SummerFragment.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btn3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(CategoryActivity.this, AutumnFragment.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        btn4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(CategoryActivity.this, WinterFragment.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
 }

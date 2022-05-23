@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.appfruit.R;
 
 import com.android.appfruit.entity.Category;
+import com.android.appfruit.entity.ListCategoryResponse;
 import com.android.appfruit.entity.Product;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -37,7 +38,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Log.i("Hello", "onCreate: ----332");
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
-        View shapeView = inflater.inflate(R.layout.fruits_item, parent, false);
+        View shapeView = inflater.inflate(R.layout.categories_item, parent, false);
         Log.i("Hello", "onCreate: ----332 1");
         return new CategoryAdapter.ViewHolder(shapeView);
     }
@@ -48,8 +49,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         Category fruit = categoryList.get(position);
         holder.fruitName.setText(fruit.getName());
         Log.i("Hello", "onCreate: 33 3----");
-        holder.fruitPrice.setText(String.valueOf(fruit.getPrice()));
-        Glide.with(mContext).applyDefaultRequestOptions(new RequestOptions().override(70, 70)).load(fruit.getThumbnail()).into(holder.imagView);
+//        holder.fruitPrice.setText(String.valueOf(fruit.getPrice()));
+//        Glide.with(mContext).applyDefaultRequestOptions(new RequestOptions().override(70, 70)).load(fruit.getThumbnail()).into(holder.imagView);
     }
 
     @Override
@@ -64,9 +65,9 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         public TextView fruitName, fruitPrice;
         public ViewHolder(View itemView) {
             super(itemView);
-            imagView = itemView.findViewById(R.id.imgView);
+//            imagView = itemView.findViewById(R.id.imgView);
             fruitName = itemView.findViewById(R.id.txtView);
-            fruitPrice = itemView.findViewById(R.id.txt1);
+//            fruitPrice = itemView.findViewById(R.id.txt1);
         }
     }
 }

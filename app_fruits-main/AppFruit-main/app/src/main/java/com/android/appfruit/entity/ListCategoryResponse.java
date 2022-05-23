@@ -15,4 +15,6 @@ public class ListCategoryResponse {
     public void setData(List<Category> data) {
         this.data = data;
     }
+
+
 }

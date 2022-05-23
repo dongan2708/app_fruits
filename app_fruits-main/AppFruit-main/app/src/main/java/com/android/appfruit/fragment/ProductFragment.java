@@ -38,7 +38,7 @@ public class ProductFragment extends Fragment {
                              Bundle savedInstanceState) {
         currentContext = container.getContext();
         System.out.println(currentContext);
-        view = inflater.inflate(R.layout.activity_productfragment, container, false);
+        view = inflater.inflate(R.layout.fragment_product, container, false);
         initData();
         initView();
         // Inflate the layout for this fragment

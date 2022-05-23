@@ -15,11 +15,11 @@ public interface CategoryService {
     @GET("api/v1/products/list?categoryId=1")
     Call<ListCategoryResponse> getSpring();
     @GET("api/v1/products/list?categoryId=2")
-    Call<ListCategoryResponse> getSummer();
+    Call<List<Category>> getSummer();
     @GET("api/v1/products/list?categoryId=3")
-    Call<ListCategoryResponse> getAutumn();
+    Call<List<Category>> getAutumn();
     @GET("api/v1/products/list?categoryId=4")
-    Call<ListCategoryResponse> getWinter();
+    Call<List<Category>> getWinter();
 
 }
 
