@@ -7,13 +7,13 @@
     tools:context=".activity.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgSignIn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:foreground="@drawable/forground_design"
         android:scaleType="centerCrop"
         android:src="@drawable/bg"
-        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <TextView
@@ -26,7 +26,7 @@
         android:textColor="@color/white"
         android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/imageView"
+        app:layout_constraintEnd_toEndOf="@id/imgSignIn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".2" />
@@ -48,14 +48,14 @@
 
 
     <EditText
-        android:id="@+id/Text"
+        android:id="@+id/txtUserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
         android:backgroundTint="#CCCCCC"
-        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:drawablePadding="13dp"
-        android:hint="@string/email_address"
+        android:hint="@string/user_name"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textColorHint="@color/white"
@@ -67,7 +67,7 @@
         />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="112dp"
@@ -99,7 +99,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
         app:layout_constraintVertical_bias="0.6"
         app:layout_constraintWidth_percent=".8" />
 
@@ -113,7 +113,7 @@
         android:textColor="#FBFBFB"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/imgSignIn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.293"
         app:layout_constraintStart_toStartOf="parent"
