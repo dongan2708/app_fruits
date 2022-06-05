@@ -2,6 +2,7 @@
 package com.android.appfruit.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
@@ -42,6 +43,8 @@ public class ProductFragment extends Fragment {
     private boolean isLastPage;
     private int totalPage = 5;
     private int currentPage = 1;
+    private String token = null;
+
 
     private void setFirstData() {
         products = getProducts();
@@ -133,8 +136,13 @@ public class ProductFragment extends Fragment {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         products = new ArrayList<>();
+        SharedPreferences settings = getActivity().getSharedPreferences("token", Context.MODE_PRIVATE);
+        token = settings.getString("token", "");
+        String refreshToken = settings.getString("refreshToken", "");
+        Log.d("token", token);
+        Log.d("refreshToken", refreshToken);
         if (productService == null) {
-            productService = RetrofitGenerator.createService(ProductService.class);
+            productService = RetrofitGenerator.createService(ProductService.class,token);
         }
     }
 

@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
     private void initData() {
-        btnRegister = (Button) findViewById(R.id.button);
+        btnRegister = (Button) findViewById(R.id.button_register);
         text_username = (EditText) findViewById(R.id.txtUserName);
         text_name = (EditText) findViewById(R.id.txtName);
         text_password = (EditText) findViewById(R.id.txtPassword);

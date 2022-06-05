@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.TextUtils;
@@ -38,6 +39,9 @@ public class LoginActivity extends AppCompatActivity {
     TextView tvMyFruits, tvSignIn, tvDntHvAccount, tvRegister;
     ImageView imgView2;
     AccountService accountService;
+    SharedPreferences settings;
+    SharedPreferences.Editor editor;
+    String token;
 
 //    FirebaseAuth mAuth;
     @Override
@@ -51,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
             //your codes here
+            settings = getApplicationContext().getSharedPreferences("token", MODE_PRIVATE);
+            editor = settings.edit();
         }
         initData();
         initListener();
@@ -65,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
 //        });
     }
     private void initData() {
-        btnSignIn = findViewById(R.id.button);
+        btnSignIn = findViewById(R.id.buttonLogin);
         imgView2 = findViewById(R.id.imgSignIn);
         tvMyFruits = findViewById(R.id.txtView1);
         tvSignIn = findViewById(R.id.txtView2);
@@ -87,15 +93,21 @@ public class LoginActivity extends AppCompatActivity {
                 LoginDto loginDto = new LoginDto();
                 loginDto.setUsername(userName);
                 loginDto.setPassword(password);
+                if (accountService == null){
+                    accountService = RetrofitGenerator.createService(AccountService.class);
+                }
                 try {
                     Response<LoginToken> tokenResponse =  accountService.login(loginDto).execute();
                     Log.d("Token","1234");
-
                     if(tokenResponse.isSuccessful()){
                         Log.d("Token","12345");
-
-//                        LoginToken loginToken = tokenResponse.body();
-//                        Log.d("Token", loginToken.getAccess_token());
+                        LoginToken loginToken = tokenResponse.body();
+                        token = loginToken.getAccess_token();
+                        Log.d("Token", loginToken.getAccess_token());
+                        String refreshToken = loginToken.getRefresh_token();
+                        if (token != null) editor.putString("token", token);
+                        if (refreshToken != null) editor.putString("refreshToken", refreshToken);
+                        editor.commit();
                         Toast.makeText(LoginActivity.this, "Login success",Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }else {

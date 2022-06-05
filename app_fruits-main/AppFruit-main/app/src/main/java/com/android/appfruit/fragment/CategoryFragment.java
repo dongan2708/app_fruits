@@ -1,6 +1,7 @@
 package com.android.appfruit.fragment;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -34,6 +35,8 @@ public class CategoryFragment extends Fragment {
     private Context currentContext;
     private RecyclerView recyclerView;
 
+    private String token = null;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,9 +63,14 @@ public class CategoryFragment extends Fragment {
         StrictMode.setThreadPolicy(policy);
         // khởi tạo categories
         categories = new ArrayList<>();
+        SharedPreferences settings = getActivity().getSharedPreferences("token", Context.MODE_PRIVATE);
+        token = settings.getString("token", "");
+        String refreshToken = settings.getString("refreshToken", "");
+        Log.d("token", token);
+        Log.d("refreshToken", refreshToken);
         // khởi tạo retrofit để call api trường hợp chưa.
         if (categoryService == null) {
-            categoryService = RetrofitGenerator.createService(CategoryService.class);
+            categoryService = RetrofitGenerator.createService(CategoryService.class,token);
         }
         try {
             Response<List<Category>> CategoryResponse = categoryService.getAll().execute();
