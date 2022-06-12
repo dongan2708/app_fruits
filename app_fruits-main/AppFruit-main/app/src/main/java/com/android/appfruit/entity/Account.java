@@ -6,6 +6,7 @@ public class Account {
     private String password;
     private String phone;
     private String name;
+    private String address;
 
     public Account() {
     }
@@ -17,16 +18,9 @@ public class Account {
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
-    public Account(String id, String username, String password, String phone, String name) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.phone = phone;
-        this.name = name;
-    }
-
     public String getId() {
         return id;
     }
@@ -66,4 +60,14 @@ public class Account {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+
 }

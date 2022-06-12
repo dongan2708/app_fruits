@@ -3,16 +3,24 @@ package com.android.appfruit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 
 import com.android.appfruit.activity.LoginActivity;
 import com.android.appfruit.fragment.CategoryFragment;
+import com.android.appfruit.fragment.LogoutFragment;
 import com.android.appfruit.fragment.MyHomeFragment;
 import com.android.appfruit.fragment.MyProfileFragment;
 import com.android.appfruit.fragment.ProductFragment;
@@ -21,9 +29,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity
         implements
@@ -37,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     FirebaseAuth mAuth;
     // Firebase
     private DatabaseReference myRef;
+    private SearchView searchView;
     //private Storage
     //Add fragment
     public static MyHomeFragment myHomeFragment;
@@ -44,13 +51,23 @@ public class MainActivity extends AppCompatActivity
     public static CategoryFragment categoryFragment;
     public static ShoppingCartFragment shoppingCartFragment;
     public static MyProfileFragment myProfileFragment;
+    public static LogoutFragment logoutFragment;
+    public static String accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SharedPreferences sh = getSharedPreferences("PRIVATE_INFOR", MODE_PRIVATE);
+        accessToken = sh.getString("token", "");
+        Log.d("AccessToken - Load", accessToken);
+//        final Menu menu = navigationView.getMenu();
+//        if(accessToken != null && accessToken.length() > 0){
+//            menu.add(" Runtime item"+ i);
+//        }else{
+//
+//        }
         initView();
-
 //        myRef = FirebaseDatabase.getInstance().getReference();
     }
     private void initView() {
@@ -78,6 +95,7 @@ public class MainActivity extends AppCompatActivity
         categoryFragment = new CategoryFragment();
         shoppingCartFragment= new ShoppingCartFragment();
         myProfileFragment = new MyProfileFragment();
+        logoutFragment = new LogoutFragment();
         // chạy fragment default
         getSupportFragmentManager()
                 .beginTransaction()
@@ -121,11 +139,18 @@ public class MainActivity extends AppCompatActivity
                         .replace(R.id.frame_layout, myProfileFragment, MyProfileFragment.class.getName())
                         .commit();
                 break;
+            case R.id.nav_login:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                break;
 
         }
         return false;
     }
+    public void Welcome(View view) {
+        startActivity(new Intent(MainActivity.this, LogoutFragment.class));
 
+    }
 //    @Override
 //    protected void onStart() {
 //        super.onStart();
@@ -135,5 +160,13 @@ public class MainActivity extends AppCompatActivity
 //            startActivity(new Intent(MainActivity.this, LoginActivity.class));
 //        }
 //    }
-
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main, menu);
+    SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+    searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+    searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+    searchView.setMaxWidth(Integer.MAX_VALUE);
+    return true;
+}
 }

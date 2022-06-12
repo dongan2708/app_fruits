@@ -11,12 +11,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import retrofit2.Response;
+import retrofit2.http.PUT;
 
 public class AccountServiceTest {
 
     AccountService accountService;
+    MyProfileService profileService;
     @Before
     public void setUp() throws Exception {
         accountService = RetrofitGenerator.createService(AccountService.class);
@@ -44,7 +47,7 @@ public class AccountServiceTest {
     @Test
     public void testRegister() {
         LoginDto login = new LoginDto();
-        login.setUserName("test2");
+        login.setUsername("test2");
         login.setPassword("1234");
         try {
             Response<LoginToken> credentialDtoResponse = accountService.login(login).execute();
@@ -53,6 +56,24 @@ public class AccountServiceTest {
             System.out.println(credentialDtoResponse.toString());
             System.out.println(new Gson().toJson(credentialDtoResponse) );
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void testProfile(){
+        Account account = new Account();
+        account.getUsername();
+        account.getName();
+        account.getPhone();
+        account.getAddress();
+        try {
+            Response<List<Account>> credentialDtoResponse = profileService.getAll(3).execute();
+            System.out.println(credentialDtoResponse.code());
+            System.out.println(credentialDtoResponse.isSuccessful());
+            System.out.println(credentialDtoResponse.toString());
+            System.out.println(new Gson().toJson(credentialDtoResponse) );
+
+        } catch (IOException e){
             e.printStackTrace();
         }
     }

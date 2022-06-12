@@ -1,6 +1,7 @@
 
 package com.android.appfruit.fragment;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,10 +9,12 @@ import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,6 +35,7 @@ import java.util.List;
 import retrofit2.Response;
 
 public class ProductFragment extends Fragment {
+    public static ArrayList<Product> productList = new ArrayList<Product>();
     private int currentCategoryId = 0;
     private ProductService productService;
     private RecyclerView recyclerView;
@@ -43,8 +47,8 @@ public class ProductFragment extends Fragment {
     private boolean isLastPage;
     private int totalPage = 5;
     private int currentPage = 1;
+    private int limit = 5;
     private String token = null;
-
 
     private void setFirstData() {
         products = getProducts();
@@ -57,16 +61,32 @@ public class ProductFragment extends Fragment {
     }
 
     private List<Product> getProducts() {
-        Toast.makeText(currentContext, "Load more data" + currentPage, Toast.LENGTH_SHORT).show();
+        Toast.makeText(currentContext, "Current page: " + currentPage, Toast.LENGTH_SHORT).show();
         try {
             Response<ListProductResponse> responseProductResponse = null;
+            Log.d("Logger", "currentCategoryId..." + currentCategoryId);
             if (currentCategoryId == 0) {
-                responseProductResponse = productService.getAll().execute();
+                responseProductResponse = productService.getAll(currentPage, limit, null).execute();
             } else {
-                responseProductResponse = productService.getByCategory(currentCategoryId).execute();
+                responseProductResponse = productService.getAll(currentPage, limit, currentCategoryId).execute();
             }
+            Log.d("Logger", "success..." + responseProductResponse.isSuccessful());
             if (responseProductResponse.isSuccessful()) {
-                return responseProductResponse.body().getData();
+                Log.d("Size", "" + responseProductResponse.body().getData().size());
+                try {
+                    Log.d("Pagination", responseProductResponse.body().getPagination().toString());
+                    ListProductResponse listProductResponse = responseProductResponse.body();
+                    currentPage = listProductResponse.getPagination().getPage();
+                    totalPage = listProductResponse.getPagination().getTotalPages();
+                    return listProductResponse.getData();
+                } catch (Exception ex) {
+                    currentPage = 1;
+                    Log.d("Error", ex.getMessage());
+                }
+            } else {
+                Log.d("Logger", "reason..." + responseProductResponse.message());
+                Log.d("Logger", "reason..." + responseProductResponse.errorBody());
+                Log.d("Logger", "reason..." + responseProductResponse.code());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,13 +101,11 @@ public class ProductFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_product, container, false);
         config();
         initView();
-        // Inflate the layout for this fragment
         setFirstData();
-
         return view;
     }
-
     private void initView() {
+
         recyclerView = view.findViewById(R.id.recycler_view_list_product);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(currentContext);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -98,10 +116,13 @@ public class ProductFragment extends Fragment {
         recyclerView.addOnScrollListener(new PaginationScrollListener(linearLayoutManager) {
             @Override
             public void loadMoreItems() {
-                isLoading = true;
-                currentPage += 1;
-                loadNextPage();
+                if(!isLoading){
+                    isLoading = true;
+                    currentPage += 1;
+                    loadNextPage();
+                }
             }
+
             @Override
             public boolean isLoading() {
                 return isLoading;
@@ -123,9 +144,9 @@ public class ProductFragment extends Fragment {
                 products.addAll(list);
                 productAdapter.notifyDataSetChanged();
                 isLoading = false;
-                if(currentPage < totalPage){
+                if (currentPage < totalPage) {
                     productAdapter.addFooterLoading();
-                }else{
+                } else {
                     isLastPage = true;
                 }
             }
@@ -142,7 +163,7 @@ public class ProductFragment extends Fragment {
         Log.d("token", token);
         Log.d("refreshToken", refreshToken);
         if (productService == null) {
-            productService = RetrofitGenerator.createService(ProductService.class,token);
+            productService = RetrofitGenerator.createService(ProductService.class, token);
         }
     }
 
@@ -153,4 +174,5 @@ public class ProductFragment extends Fragment {
     public void setCurrentCategoryId(int currentCategoryId) {
         this.currentCategoryId = currentCategoryId;
     }
+
 }

@@ -66,7 +66,6 @@ public class CategoryFragment extends Fragment {
         SharedPreferences settings = getActivity().getSharedPreferences("token", Context.MODE_PRIVATE);
         token = settings.getString("token", "");
         String refreshToken = settings.getString("refreshToken", "");
-        Log.d("token", token);
         Log.d("refreshToken", refreshToken);
         // khởi tạo retrofit để call api trường hợp chưa.
         if (categoryService == null) {

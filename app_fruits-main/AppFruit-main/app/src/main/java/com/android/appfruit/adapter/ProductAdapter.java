@@ -23,7 +23,7 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder>{
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> implements Filterable{
 
     List<Product> productList;
     Context mContext;
@@ -40,6 +40,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         this.productList = products;
         this.mContext = context;
     }
+
+    public ProductAdapter(Context applicationContext, int i, ArrayList<Product> filteredShapes) {
+    }
+
     public void setData(List<Product> data){
         this.productList = data;
         notifyDataSetChanged();
@@ -65,7 +69,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             Product fruit = productList.get(position);
             holder.fruitName.setText(fruit.getName());
             holder.fruitPrice.setText(String.valueOf(fruit.getPrice()));
-            Glide.with(mContext).applyDefaultRequestOptions(new RequestOptions().override(70, 70)).load(fruit.getThumbnail()).into(holder.imagView);
+            try {
+                Glide.with(mContext).applyDefaultRequestOptions(new RequestOptions().override(70, 70)).load(fruit.getThumbnail()).into(holder.imagView);
+            }catch (Exception ex){
+                Log.d("Error", String.format("Cant load image from product id %d, image link %s", fruit.getId(), fruit.getThumbnail()));
+            }
+
         }
     }
     @Override
@@ -80,6 +89,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
         return VIEW_TYPE_ITEM;
     }
+
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imagView;

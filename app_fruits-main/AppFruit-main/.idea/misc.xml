@@ -85,6 +85,8 @@
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/drawable-v24/ic_userprofile.xml" value="0.139" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/drawable-v24/non_active_dot.xml" value="0.1495" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/drawable/bg_indicatior.xml" value="0.112" />
+        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/drawable/home_search.xml" value="0.1" />
+        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.146" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/drawable/ic_search.xml" value="0.1405" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/font/aclonica.xml" value="0.20572916666666666" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/font/amarante.xml" value="0.20572916666666666" />
@@ -98,20 +100,21 @@
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/activity_productfragment.xml" value="0.17552083333333332" />
-        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/activity_register.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/activity_spring.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/categories_item.xml" value="0.22" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_autumn.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_category.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_login.xml" value="0.17552083333333332" />
-        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_product.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_logout.xml" value="0.17552083333333332" />
+        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_product.xml" value="0.22" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_profile.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_register.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_spring.xml" value="0.16145833333333334" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_summer.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fragment_winter.xml" value="0.17552083333333332" />
-        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fruits_item.xml" value="0.1" />
+        <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/fruits_item.xml" value="0.22" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/item_home_slider.xml" value="0.17552083333333332" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/item_load_more.xml" value="0.16145833333333334" />
         <entry key="..\:/GITHUB/app_fruits/app_fruits-main/AppFruit-main/app/src/main/res/layout/item_photo.xml" value="0.16145833333333334" />

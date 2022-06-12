@@ -22,13 +22,10 @@
             android:icon="@drawable/ic_shopping_cart"
             android:title="Shopping Cart" />
         <item
-        android:id="@+id/nav_my_profile"
+        android:id="@+id/nav_login"
         android:icon="@drawable/ic_male"
-        android:title="My Profile" />
-        <item
-            android:id="@+id/logout"
-            android:icon="@drawable/ic_logout"
-            android:title="Logout" />
+        android:title="Login" />
+
     </group>
 
 

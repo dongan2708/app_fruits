@@ -51,7 +51,7 @@
         android:id="@+id/txtUserName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_account_circle_24"
         android:drawablePadding="13dp"
@@ -70,20 +70,19 @@
         android:id="@+id/txtPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="30dp"
         android:backgroundTint="#CCCCCC"
         android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
         android:drawablePadding="13dp"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
+        android:textColor="#ffffff"
         android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtView2"
-        app:layout_constraintWidth_percent=".8"
-        android:textColor="#ffffff"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/txtUserName"
+        app:layout_constraintWidth_percent=".8" />
 
     <Button
         android:onClick="mainActivity"

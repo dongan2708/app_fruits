@@ -43,14 +43,14 @@ public class LoginActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     String token;
 
-//    FirebaseAuth mAuth;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         int SDK_INT = android.os.Build.VERSION.SDK_INT;
-        if (SDK_INT > 8)
-        {
+        if (SDK_INT > 8) {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                     .permitAll().build();
             StrictMode.setThreadPolicy(policy);
@@ -60,16 +60,15 @@ public class LoginActivity extends AppCompatActivity {
         }
         initData();
         initListener();
-//        mAuth = FirebaseAuth.getInstance();
-
+////        mAuth = FirebaseAuth.getInstance();
 //        btnSignIn.setOnClickListener(view ->{
 //            loginUser();
 //        });
-//
 //        tvRegister.setOnClickListener(view ->{
 //            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
 //        });
     }
+
     private void initData() {
         btnSignIn = findViewById(R.id.buttonLogin);
         imgView2 = findViewById(R.id.imgSignIn);
@@ -80,43 +79,46 @@ public class LoginActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.txtPassword);
         etUserName = findViewById(R.id.txtUserName);
         accountService = RetrofitGenerator.createService(AccountService.class);
-
     }
+
     private void initListener() {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("Token","123");
                 String userName = etUserName.getText().toString();
                 String password = etPassword.getText().toString();
 
                 LoginDto loginDto = new LoginDto();
                 loginDto.setUsername(userName);
                 loginDto.setPassword(password);
-                if (accountService == null){
+                if (accountService == null) {
                     accountService = RetrofitGenerator.createService(AccountService.class);
                 }
                 try {
-                    Response<LoginToken> tokenResponse =  accountService.login(loginDto).execute();
-                    Log.d("Token","1234");
-                    if(tokenResponse.isSuccessful()){
-                        Log.d("Token","12345");
+                    Response<LoginToken> tokenResponse = accountService.login(loginDto).execute();
+                    if (tokenResponse.isSuccessful()) {
                         LoginToken loginToken = tokenResponse.body();
                         token = loginToken.getAccess_token();
+                        // Storing data into SharedPreferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("PRIVATE_INFOR", MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                        myEdit.putString("token", token);
+                        myEdit.commit();
+                        Log.d("AccessToken - Save: ", loginToken.getAccess_token());
                         Log.d("Token", loginToken.getAccess_token());
                         String refreshToken = loginToken.getRefresh_token();
                         if (token != null) editor.putString("token", token);
                         if (refreshToken != null) editor.putString("refreshToken", refreshToken);
                         editor.commit();
-                        Toast.makeText(LoginActivity.this, "Login success",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login success", Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                    }else {
-                        Log.d("Token",new Gson().toJson(tokenResponse.message()));
-                        Log.d("Token",new Gson().toJson(tokenResponse.body()));
-                        Log.d("Token",new Gson().toJson(tokenResponse.errorBody()));
-                        Log.d("Token",new Gson().toJson(tokenResponse.code()));
+                    } else {
+                        Log.d("Token", new Gson().toJson(tokenResponse.message()));
+                        Log.d("Token", new Gson().toJson(tokenResponse.body()));
+                        Log.d("Token", new Gson().toJson(tokenResponse.errorBody()));
+                        Log.d("Token", new Gson().toJson(tokenResponse.code()));
 
-                        Toast.makeText(LoginActivity.this,"Login failed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Login failed!", Toast.LENGTH_SHORT).show();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -124,32 +126,31 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-//    private void loginUser() {
-//        String name = etUserName.getText().toString();
-//        String password = etPassword.getText().toString();
-//
-//        if(TextUtils.isEmpty(name)){
-//            etUserName.setError("Please Enter UserName");
-//            etUserName.requestFocus();
-//        }
-//        else if(TextUtils.isEmpty(password)){
-//            etPassword.setError("Please Enter Password");
-//            etPassword.requestFocus();
-//        }
-////        else{
-////            mAuth.signInWithEmailAndPassword(name,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-////                @Override
-////                public void onComplete(@NonNull Task<AuthResult> task) {
-////                    if(task.isSuccessful()){
-////                        Toast.makeText(LoginActivity.this,"User Logged in Successfully", Toast.LENGTH_SHORT).show();
-////                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-////                    }else{
-////                        Toast.makeText(LoginActivity.this,"Log in Error : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-////                    }
-////                }
-////            });
-////        }
-//    }
+
+    private void loginUser() {
+        String name = etUserName.getText().toString();
+        String password = etPassword.getText().toString();
+
+        if (TextUtils.isEmpty(name)) {
+            etUserName.setError("Please Enter UserName");
+            etUserName.requestFocus();
+        } else if (TextUtils.isEmpty(password)) {
+            etPassword.setError("Please Enter Password");
+            etPassword.requestFocus();
+        } else {
+            mAuth.signInWithEmailAndPassword(name, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(LoginActivity.this, "User Logged in Successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Log in Error : " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
 
     public void Register(View view) {
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
