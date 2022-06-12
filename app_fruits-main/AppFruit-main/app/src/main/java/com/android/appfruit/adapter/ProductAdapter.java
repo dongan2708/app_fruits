@@ -1,25 +1,33 @@
 package com.android.appfruit.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.appfruit.R;
+import com.android.appfruit.dto.AddCartDto;
 import com.android.appfruit.entity.Product;
+import com.android.appfruit.fragment.ShoppingCartFragment;
+import com.android.appfruit.service.CartService;
+import com.android.appfruit.util.RetrofitGenerator;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,7 +89,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             }catch (Exception ex){
                 Log.d("Error", String.format("Cant load image from product id %d, image link %s", fruit.getId(), fruit.getThumbnail()));
             }
-
             holder.imgAddToCart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -116,7 +123,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
         return VIEW_TYPE_ITEM;
     }
-
     @Override
     public Filter getFilter() {
         return null;

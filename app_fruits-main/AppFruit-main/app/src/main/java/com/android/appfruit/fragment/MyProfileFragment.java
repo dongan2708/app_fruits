@@ -1,6 +1,7 @@
 package com.android.appfruit.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.appfruit.R;
+import com.android.appfruit.activity.LoginActivity;
+import com.android.appfruit.activity.RegisterActivity;
 import com.android.appfruit.adapter.CategoryAdapter;
 import com.android.appfruit.entity.Account;
 import com.android.appfruit.entity.Category;
@@ -42,12 +45,6 @@ public class MyProfileFragment extends Fragment {
     private void initData() {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-
-//        Account account = new Account();
-//        account.getUsername(username);
-//        account.getPassword(password);
-//        account.getPhone(phone);
-//        account.getName(name);
-
     }
+
 }

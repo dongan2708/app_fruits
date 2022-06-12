@@ -2,7 +2,7 @@ package com.android.appfruit.service;
 
 import com.android.appfruit.dto.AddCartDto;
 import com.android.appfruit.entity.CartItem;
-import com.android.appfruit.entity.Item;
+
 import com.android.appfruit.entity.ShoppingCart;
 
 import java.util.List;

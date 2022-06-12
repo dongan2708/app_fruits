@@ -55,10 +55,10 @@ public class RegisterActivity extends AppCompatActivity {
             //your codes here
         }
         initData();
-       checkConfirmPassword();
+        checkConfirmPassword();
         createUser();
         initListener();
-       redirectLogin();
+        redirectLogin();
 //        mAuth = FirebaseAuth.getInstance();
         btnRegister.setOnClickListener(view -> {
         });
@@ -82,11 +82,9 @@ public class RegisterActivity extends AppCompatActivity {
                     passwordConfirmAlert.setTextColor(Color.GREEN);
                 }
             }
-
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
@@ -119,7 +117,6 @@ public class RegisterActivity extends AppCompatActivity {
         passwordConfirmAlert = findViewById(R.id.PasswordConfirmAlert);
         addressAlert = findViewById(R.id.AddressAlert);
     }
-
     private void initListener() {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,14 +126,11 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = text_password.getText().toString();
                 String name = text_name.getText().toString();
                 String phone = text_phone.getText().toString();
-                String address = text_address.getText().toString();
-
                 Account account = new Account();
-                 account.setUsername(username);
-                 account.setPassword(password);
-                 account.setPhone(phone);
-                 account.setName(name);
-                account.setAddress(address);
+                if (validateUserName())account.setUsername(username);
+                if (validatePassword()) account.setPassword(password);
+                if (validatePhone()) account.setPhone(phone);
+                if (validateName()) account.setName(name);
 
                 AccountService accountService = RetrofitGenerator.createService(AccountService.class);
                 Log.d("ERROR", new Gson().toJson(account));
@@ -165,10 +159,12 @@ public class RegisterActivity extends AppCompatActivity {
         if (TextUtils.isEmpty(username)) {
             text_username.setError("Please Enter Name");
             text_username.requestFocus();
-        } else if (TextUtils.isEmpty(password)) {
+        }
+        else if (TextUtils.isEmpty(password)) {
             text_password.setError("Please Enter Password");
             text_password.requestFocus();
-        } else
+        }
+        else
         {
             mAuth.createUserWithEmailAndPassword(username, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
@@ -197,7 +193,6 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         }
     }
-
     private boolean validateName() {
         String fullnameInput = text_name.getText().toString().trim();
         if (fullnameInput.isEmpty()) {
@@ -208,7 +203,6 @@ public class RegisterActivity extends AppCompatActivity {
             return true;
         }
     }
-
     private boolean validateUserName() {
         String usernameInput = text_username.getText().toString().trim();
         if (usernameInput.isEmpty()) {
@@ -236,22 +230,9 @@ public class RegisterActivity extends AppCompatActivity {
         }
         return true;
     }
-    private boolean validateConfirmPassword() {
-        String confirmPassword = pass_confirm.getText().toString().trim();
-        if (confirmPassword.isEmpty()) {
-            passwordConfirmAlert.setText("Field can not be empty");
-            return false;
-        }
-        if (confirmPassword.length() < 3) {
-            passwordConfirmAlert.setText("Password must be at least 3 characters");
-            return false;
-        }
-        return true;
-    }
     public void Login(View view) {
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
-
     public void mainActivity(View view) {
         startActivity(new Intent(RegisterActivity.this, MainActivity.class));
     }

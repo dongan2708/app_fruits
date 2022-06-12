@@ -12,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.appfruit.R;
-import com.android.appfruit.entity.Cart;
+//import com.android.appfruit.entity.Cart;
 import com.android.appfruit.entity.CartItem;
-import com.android.appfruit.entity.Item;
+//import com.android.appfruit.entity.Item;
 import com.android.appfruit.entity.Product;
 import com.android.appfruit.service.CartService;
 import com.android.appfruit.util.RetrofitGenerator;

@@ -7,6 +7,7 @@ public class Account {
     private String phone;
     private String name;
     private String address;
+    private String password_confirm;
 
     public Account() {
     }

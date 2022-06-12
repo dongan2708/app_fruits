@@ -18,6 +18,8 @@
     <string name="address">Address</string>
     <string name="user_name">User Name</string>
     <string name="name">Name</string>
+    <string name="menu_home">Home</string>
+
     <string name="confirm_password">Confirm Password</string>
 
     <string name="password">Password</string>

@@ -29,6 +29,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity
@@ -149,17 +150,16 @@ public class MainActivity extends AppCompatActivity
     }
     public void Welcome(View view) {
         startActivity(new Intent(MainActivity.this, LogoutFragment.class));
-
     }
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        if(user == null)
-//        {
-//            startActivity(new Intent(MainActivity.this, LoginActivity.class));
-//        }
-//    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null)
+        {
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+    }
 @Override
 public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.main, menu);
