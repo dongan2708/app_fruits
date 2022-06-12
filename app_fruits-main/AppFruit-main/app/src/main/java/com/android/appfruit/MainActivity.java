@@ -20,6 +20,7 @@ import android.widget.FrameLayout;
 
 import com.android.appfruit.activity.LoginActivity;
 import com.android.appfruit.fragment.CategoryFragment;
+import com.android.appfruit.fragment.CheckOutFragment;
 import com.android.appfruit.fragment.LogoutFragment;
 import com.android.appfruit.fragment.MyHomeFragment;
 import com.android.appfruit.fragment.MyProfileFragment;
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity
         shoppingCartFragment= new ShoppingCartFragment();
         myProfileFragment = new MyProfileFragment();
         logoutFragment = new LogoutFragment();
+        checkOutFragment = new CheckOutFragment();
         // chạy fragment default
         getSupportFragmentManager()
                 .beginTransaction()

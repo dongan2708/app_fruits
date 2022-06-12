@@ -19,4 +19,7 @@ public interface CartService {
 
     @POST("api/v1/orders/addToCart1")
     Call<CartItem> addToCart(@Body AddCartDto addCartDto);
+
+    @POST("api/v1/orders/proceedOrder1")
+    Call<ShoppingCart> checkOut(@Body CheckOutDto checkOutDto);
 }
