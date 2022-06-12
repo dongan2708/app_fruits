@@ -26,10 +26,66 @@ import retrofit2.Response;
 
 public class ShoppingCartFragment extends Fragment {
 
+    private View view;
+    private Context currentContext;
+    private static RecyclerView recyclerView;
+    public static Product currentProduct;
+    private static FrameLayout noItemDefault;
+    private List<CartItem> items;
+    private CartService cartService;
+    private CartAdapter cartAdapter;
+    private String token = null;
+
+    public ShoppingCartFragment() {
+        items = new ArrayList<>();
+    }
+
+
+    private ShoppingCart initData() {
+        try {
+            Response<ShoppingCart> CartItemResponse = null;
+            CartItemResponse = cartService.getCart().execute();
+            if (CartItemResponse.isSuccessful()) {
+                items = CartItemResponse.body().getOrderDetails();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.e("Cart fragment", e.getMessage());
+        }
+        return new ShoppingCart();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_category, container, false);
-        // Inflate the layout for this fragment
+        currentContext = container.getContext();
+        view = inflater.inflate(R.layout.fragment_cart, container,false);
+        config();
+        initData();
+        Log.d("data", "received");
+        initView();
+        Log.d("success", "success");
+
+        return view;
+    }
+
+    private void config() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        SharedPreferences settings = getActivity().getSharedPreferences("token", Context.MODE_PRIVATE);
+        token = settings.getString("token", "");
+        String refreshToken = settings.getString("refreshToken", "");
+        Log.d("token", token);
+        Log.d("refreshToken", refreshToken);
+        if (cartService == null) {
+            cartService = RetrofitGenerator.createService(CartService.class,token);
+        }
+    }
+
+    private void initView(){
+        recyclerView = view.findViewById(R.id.recycler_view_list_cart);
+        recyclerView.setLayoutManager(new LinearLayoutManager(currentContext));
+        recyclerView.setAdapter(new CartAdapter(currentContext, items));
     }
 }

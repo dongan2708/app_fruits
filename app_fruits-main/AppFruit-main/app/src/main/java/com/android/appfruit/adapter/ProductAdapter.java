@@ -28,6 +28,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     List<Product> productList;
     Context mContext;
     private boolean isLoadingAdd;
+    CartService cartService;
+    private String token = null;
 
     private final int VIEW_TYPE_ITEM = 0;
     private final int VIEW_TYPE_LOADING = 1;
@@ -46,6 +48,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     public void setData(List<Product> data){
         this.productList = data;
+
+        SharedPreferences settings = mContext.getSharedPreferences("token", Context.MODE_PRIVATE);
+        token = settings.getString("token", "");
+
+        this.cartService = RetrofitGenerator.createService(CartService.class, token);
         notifyDataSetChanged();
     }
 
@@ -75,6 +82,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 Log.d("Error", String.format("Cant load image from product id %d, image link %s", fruit.getId(), fruit.getThumbnail()));
             }
 
+            holder.imgAddToCart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Add to cart
+                    ShoppingCartFragment.currentProduct = productList.get(position);
+                    try {
+                        cartService.addToCart(new AddCartDto(ShoppingCartFragment.currentProduct.getId(), 1)).execute();
+                        Toast.makeText(view.getContext(), "Add Success",Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Log.d("Add +1", String.valueOf(ShoppingCartFragment.currentProduct));
+    
+                    // Redirect product to cart
+    //                ((FragmentActivity) view.getContext()).getSupportFragmentManager()
+    //                        .beginTransaction()
+    //                        .replace(R.id.frame_layout, MainActivity.shoppingCartFragment, ShoppingCartFragment.class.getName())
+    //                        .commit();
+                }
+            });
         }
     }
     @Override
@@ -99,12 +126,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         public ImageView imagView;
         public TextView fruitName, fruitPrice;
+        public ImageButton imgAddToCart;
 
         public ViewHolder(View itemView) {
             super(itemView);
             imagView = itemView.findViewById(R.id.imgView);
             fruitName = itemView.findViewById(R.id.txtView);
             fruitPrice = itemView.findViewById(R.id.txt1);
+            imgAddToCart = itemView.findViewById(R.id.img_add_to_cart);
         }
     }
 
