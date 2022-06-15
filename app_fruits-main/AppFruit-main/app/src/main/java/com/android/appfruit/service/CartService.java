@@ -22,4 +22,7 @@ public interface CartService {
 
     @POST("api/v1/orders/proceedOrder1")
     Call<ShoppingCart> checkOut(@Body CheckOutDto checkOutDto);
+
+    @POST("api/v1/orders/remove1")
+    Call<CartItem> remove(@Query("productId") int id);
 }

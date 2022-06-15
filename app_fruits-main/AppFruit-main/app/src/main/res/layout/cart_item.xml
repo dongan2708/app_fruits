@@ -117,6 +117,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt2"
                     app:layout_constraintVertical_bias="0.283" />
 
+                    <ImageButton
+                    android:id="@+id/remove_item"
+                    android:layout_width="60dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_red_corner_6"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_baseline_remove_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginRight="15dp"/>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
